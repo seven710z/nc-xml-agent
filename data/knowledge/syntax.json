@@ -1,0 +1,6 @@
+[
+  {"id": "syntax-001", "text": "数控界面 XML 根节点必须是 <screen>，每个控件用 <widget> 包裹，控件类型通过 type 属性声明。", "metadata": {"category": "xml_syntax", "topic": "根节点规范"}},
+  {"id": "syntax-002", "text": "所有控件必须包含唯一的 id 属性，id 命名遵循 camelCase，且在同一 screen 内不可重复。", "metadata": {"category": "xml_syntax", "topic": "id 规范"}},
+  {"id": "syntax-003", "text": "XML 片段必须满足良构性（well-formed）：标签成对闭合、属性值用双引号包裹、不能有未转义的特殊字符。", "metadata": {"category": "xml_syntax", "topic": "良构性"}},
+  {"id": "syntax-004", "text": "控件布局使用 layout 属性，取值支持 top / bottom / left / right / center / grid。", "metadata": {"category": "xml_syntax", "topic": "布局属性"}}
+]

@@ -1,0 +1,92 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nc-xml-agent"
+version = "0.1.0"
+description = "数控 XML 界面生成与自动部署 AI Agent —— 面试演示工程（LangGraph + RAG + MCP + FastAPI）"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Shizhihao" }]
+keywords = ["langgraph", "rag", "mcp", "llm", "agent", "fastapi", "cnc"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+# 核心运行依赖（mock 模式可跑通的最小集合）
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "pydantic>=2.7.0",
+    "pydantic-settings>=2.3.0",
+    "langgraph>=0.2.0",
+    "langchain-core>=0.3.0",
+    "httpx>=0.27.0",
+]
+
+[project.optional-dependencies]
+# 真实 RAG：Chroma + Embedding
+rag = [
+    "chromadb>=0.5.0",
+    "sentence-transformers>=3.0.0",
+]
+# 微调：PEFT + LoRA
+finetune = [
+    "peft>=0.14.0",
+    "transformers>=4.47.0",
+    "torch>=2.5.0",
+    "datasets>=3.0.0",
+]
+# 开发与测试
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.8.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.setuptools.package-data]
+app = ["py.typed"]
+
+# ---------------------------------------------------------------------------
+# ruff 配置：lint + format 一体化，保持代码风格一致
+# ---------------------------------------------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["app", "scripts", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort (import 排序)
+    "N",   # pep8-naming
+    "B",   # flake8-bugbear（常见 bug）
+    "UP",  # pyupgrade（语法升级）
+]
+ignore = [
+    "E501",  # 行长度由 formatter 处理，避免冲突
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
+
+# ---------------------------------------------------------------------------
+# pytest 配置
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-v --tb=short"

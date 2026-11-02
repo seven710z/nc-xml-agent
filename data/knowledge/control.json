@@ -1,0 +1,6 @@
+[
+  {"id": "control-001", "text": "button 控件用于触发机床动作，必须绑定一个输出寄存器（如 #G7.2），并配置 label 显示文字。", "metadata": {"category": "control", "topic": "按钮控件"}},
+  {"id": "control-002", "text": "display 控件用于实时显示数控变量，通过 binding 属性绑定系统变量（如主轴转速 #5001），可配置 unit 与 precision。", "metadata": {"category": "control", "topic": "数值显示"}},
+  {"id": "control-003", "text": "input 控件用于参数输入，绑定可写寄存器（如进给倍率 #1420），需声明 min / max 取值范围。", "metadata": {"category": "control", "topic": "参数输入"}},
+  {"id": "control-004", "text": "graph 控件用于绘制实时曲线（如进给速度、负载），数据源绑定多个系统变量，支持配置采样周期。", "metadata": {"category": "control", "topic": "曲线图形"}}
+]

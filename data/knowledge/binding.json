@@ -1,0 +1,6 @@
+[
+  {"id": "binding-001", "text": "系统变量 #5xxx 为只读状态量（如 #5001 主轴转速、#5021 主轴负载），只能用于 display / graph，不能写入。", "metadata": {"category": "binding_rule", "topic": "只读变量"}},
+  {"id": "binding-002", "text": "G 变量（如 #G7.x）为输出信号，可被 button 绑定用于触发动作，绑定前需在机床参数里使能。", "metadata": {"category": "binding_rule", "topic": "输出信号"}},
+  {"id": "binding-003", "text": "R 变量（如 #1420）为可读写参数寄存器，input 控件写入前需校验 min/max 范围，越界会导致机床报警。", "metadata": {"category": "binding_rule", "topic": "参数寄存器"}},
+  {"id": "binding-004", "text": "一个控件只能绑定一个变量；若要同时展示多个变量，应使用 table 或 graph 控件的多通道能力。", "metadata": {"category": "binding_rule", "topic": "绑定唯一性"}}
+]
